@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class User
+    public class Users : BaseEntity
     {
-        public Guid Id { get; set; }
+        public Users()
+        {
+
+        }
+        public Users(Guid id, string name, string email) : base(id)
+        {
+            Name = name;
+            Email = email;
+        }
         public string Name { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
-
-
     }
 }

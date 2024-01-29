@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Query
+namespace Application.User.Query
 {
-    internal class UserQuery
+    public class CreateUserQuery
     {
     }
 }

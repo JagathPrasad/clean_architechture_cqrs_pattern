@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Command
+namespace Application.User.Command
 {
-    internal class UserCommand
+    public class CreateUserCommand
     {
     }
 }
