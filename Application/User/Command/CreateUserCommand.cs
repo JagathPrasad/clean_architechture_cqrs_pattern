@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Application.User.Command
 {
-    public class CreateUserCommand
-    {
-    }
+    public record class CreateUserCommand(string Email,string Password):IRequest;
+    
 }

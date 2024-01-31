@@ -1,14 +1,10 @@
 ﻿using Domain.Abstraction;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.Entities;
+using MediatR;
 
 namespace Application.User.Command
 {
-    public class CreateUserCommandHandler
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
     {
         IUserRepository _repository;
         IUoWRepository _uoWRepository;
@@ -21,10 +17,18 @@ namespace Application.User.Command
 
         public async Task<bool> Handle(CreateUserCommand request, CancellationToken cancellation)
         {
-            var user = new Users(Guid.NewGuid(), "name", "email");
+            var user = new Users(Guid.NewGuid(), request.Email, request.Password);
             await _repository.AddUserAsync(user);
             await _uoWRepository.SaveAsync(cancellation);
             return true;
         }
+
+        //public async Task IRequestHandler<CreateUserCommand>.Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        //{
+        //    var user = new Users(Guid.NewGuid(), request.Email, request.Password);
+        //    await _repository.AddUserAsync(user);
+        //    await _uoWRepository.SaveAsync(cancellationToken);
+        //    return new CreateUserCommand("", "");
+        //}
     }
 }
