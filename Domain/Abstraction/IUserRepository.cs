@@ -10,7 +10,7 @@ namespace Domain.Abstraction
 {
     public interface IUserRepository
     {
-        Task<bool> AddUserAsync(Users user, CancellationToken token);
-        Task<Result> GetUserByEmail(string email, CancellationToken token);
+        Task<bool> AddUserAsync(Users user, CancellationToken token = default);
+        Task<Result> GetUserByEmail(string email, CancellationToken token = default);
     }
 }

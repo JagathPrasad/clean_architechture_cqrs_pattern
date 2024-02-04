@@ -48,7 +48,15 @@ namespace Application.User.Command
         }
         public async Task<Result> Handle(CreateUserCommand command, CancellationToken token)
         {
-            User user = await _repository.GetUserByEmail(command.Email, token);
+            var user = await _repository.GetUserByEmail(command.Email, token);
+            if (user != null)
+            {
+                return null;
+            }
+            Application.User user1 = new Application.User();
+
+            await _repository.AddUserAsync(user1, token);
+
         }
     }
 }
